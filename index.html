@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transport.ma</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script language="javascript" src="script.js"></script>
+</head>
+<body>
+
+    <section id="voyagesDisponibles" class="container">
+        <div id="part1">
+        <div id="villes">
+            <h1>Choisir la ville de départ et la ville destination</h1>
+            <table>               
+                <tbody>
+                    <tr><th>Ville de départ</th><th>Ville destination</th></tr>
+                    <tr><td>
+                        <select id="depart" class="choixVille">
+                            <option>------------</option>
+                            <option value="Agadir">Agadir</option>
+                            <option value="Tan-Tan">Tan-Tan</option>
+                            <option value="Tiznit">Tiznit</option>
+                            <option value="ifni">Ifni</option>
+                            <option value="Guelmim">Guelmim</option>
+                            <option value="Semara">Semara</option>
+                        </select>
+                        </td>
+                        <td>
+                            <select id="destination" class="choixVille">
+                                <option>------------</option>
+                              <option value="Agadir">Agadir</option>
+                              <option value="Tan-Tan">Tan-Tan</option>
+                              <option value="Tiznit">Tiznit</option>
+                              <option value="ifni">Ifni</option>
+                              <option value="Guelmim">Guelmim</option>
+                              <option value="Semara">Semara</option>
+                              </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="afficherHoraires();" class="btn">Valider</button>
+        </div>
+
+        <div id="horaire">
+            <h1>Les voyages disponibles pour votre choix sont:</h1>
+            <p id="msg1">Veillez choisir un trajet et cliquer sur le botton Valider.</p>
+            <table border="1" cellspacing="0">
+                    <tbody id="horiareTab">
+                      <tr><th>Numéro de voyage</th><th>Départ</th><th>Arrivé</th><th>Date</th><th>Prix</th></tr>  
+                    </tbody>
+                </table>
+        </div>
+
+    </div>
+    <div id="part2" >
+        
+              <div id="info">
+                  <h1>Choisir un voyage parmi ceux disponibles affiché en haut à droite</h1>
+                            <form>
+                                <fieldset>
+                                    <legend>le numéro du voiyage</legend>
+                                    <input type="number" id="numTrip">
+                                </fieldset> 
+                                <fieldset>
+                                    <legend>
+                                        Donner vos informations:
+                                    </legend>
+                                    <table id="infoperso">
+                                        <tbody>
+                                            <tr><td>Nom:</td><td><input type="text" id="nom"></td><td>CIN:</td><td><input type="text" id="cin"></td></tr>
+                                            <tr><td>Prénom:</td><td><input type="text" id="prenom"></td><td>Tel:</td><td><input type="number" id="tel" value="06"></td></tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </form>
+                    </div>
+
+            <div id="synthese" style="display: none;">
+                <h1>Voici votre biellet:</h1>
+                    <table border="1" cellspacing="0">
+                        <tbody>
+                            <tr><td class="title">Nom: </td><td id="synNom">MOHAMED</td><td class="title">Télephone</td><td id="synTel">0622017136</td></tr>
+                            <tr><td class="title">Prénom:</td> <td id="synPrenom">Lachgar</td><td class="title">Numéro De voyage</td><td id="synNumVoy">152412</td></tr>
+                            <tr><td class="title">CIN: </td><td id="synCin">JF58423</td><td class="title">Date</td><td id="synDate">12/09/2020</td></tr>
+                            <tr><td colspan="2" class="title">prix</td><td id="synPrix" colspan="2">100DH</td></tr>
+                        </tbody>
+                    </table>
+                    <button class="btn" onclick="autreReserve();">Autre réservation</button>        
+            </div>
+                <div id="controls" >
+                    <button class="btn" onclick="verifier();">Réserver</button>
+                    <button class="btn" onclick="effacer();">Effacer</button>
+                </div>        
+    </div>
+    
+    </section>
+
+
+    <section id="messagerie" class="container">
+            <div id="headerMessagerie">
+                <h1>Messagerie de Transport.ma</h1>
+                <p>Envoyer vos colis en toute sécurité et en temps !</p>
+            </div>
+
+
+
+            <div id="infoMessageries">
+                <fieldset id="info1" class="colisInfos">
+                        <legend>
+                            Veillez donner les informations de votre colis :
+                        </legend>
+                            <table id="colisTab">
+                                    <tbody>
+                                        <tr><td>Référence:</td><td><input type="text" id="nomColis"></td><td>Poids(kg):</td><td><input type="number" id="poids"></td></tr>
+                                        <tr><td>Type:</td><td><input type="text" id="type"></td><td>Fragile :</td><td><input type="radio" name="Fragile" id="Fragile1" value="Oui">Oui<input type="radio" name="Fragile"  id="Fragile2" value="Non">Non </td></tr>
+                                        <tr><td colspan="2">Date d'envoie:</td><td colspan="2"><input type="date" id="dateEnvoie"></td></tr>
+                                    </tbody>
+                            </table>
+                </fieldset>
+                <fieldset id="info2" class="colisInfos">
+                    <legend>
+                        Donner vos informations:
+                    </legend>
+                    <table id="infoPersoColis">
+                        <tbody>
+                            <tr><td>Nom:</td><td><input type="text" id="nomPersoColis"></td><td>CIN:</td><td><input type="text" id="cinPersoColis"></td></tr>
+                            <tr><td>Prénom:</td><td><input type="text" id="prenomPersoColis"></td><td>Tel:</td><td><input type="number" id="telPersoColis" value="06"></td></tr>
+                            <tr><td colspan="1">Addresse:</td><td colspan="3" ><textarea cols="70" rows="3" id="addresseDepart"></textarea></td></tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <fieldset id="info3" class="colisInfos">
+                    <legend>
+                        Donner les informations de votre destinatire:
+                    </legend>
+                    <table id="infoDestColis">
+                        <tbody>
+                            <tr><td>Nom:</td><td><input type="text" id="nomDestColis"></td><td>CIN:</td><td><input type="text" id="cinDestColis"></td></tr>
+                            <tr><td>Prénom:</td><td><input type="text" id="prenomDestColis"></td><td>Tel:</td><td><input type="number" id="telDestColis" value="06"></td></tr>
+                            <tr><td colspan="1">Addresse:</td><td colspan="3"><textarea cols="70" rows="3" id="addresseArrive"></textarea></td></tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+
+               
+            </div>
+
+            <div id="colisControls">
+
+                <button class="btn" id="next" onclick="suivant();">Suivant</button>
+                <button class="btn" id='prev' onclick="precedant();" disabled>Précédant</button>
+            </div>
+
+
+
+
+
+            <div id="syntheseMessagerie">
+                <h2>C'est programmé !</h2>
+                <p>Un employer de Transport.ma va arriver chez vous pour prendre le colis le <span id="syndate"></span></p>
+                <button class="btn" style="display: none;" id="oth" onclick="reinitialiserColis();">Autre envoie</button>
+            </div>
+
+
+            <div id="progress">
+                <span class="etapes" style="background-color: mediumspringgreen;"><span>1</span></span><hr width="300px" size="20px" id="hr1"><span class="etapes" id="etape2"><span>2</span></span><hr size="20px" width="300px" id="hr2"><span class="etapes" id="etape3"><span>3</span></span><hr  width="300px" size="20px" id="hr3"><span class="etapes" id="etape4"><span>Fin</span></span>
+            </div>
+
+    </section>
+
+
+    <section id="tourisme" class="container"> 
+        <div class="tripContainer" id="Marrackech">
+            <img >
+            <h1>Prendre un voyage vers la ville rouge</h1>
+            <p>Souks colorés, architecture maure, jardins intimes et hôtels boutiques… Marrakech est une ville inoubliable. Passez vos journées à explorer les cours intérieures paisibles, les ruelles tortueuses de la Médina historique, promenez-vous dans le Jardin Majorelle ou admirez la beauté de la mosquée avant de passer la soirée dans un riad sublime.</p>
+            <table>
+                <tbody>
+                    <tr><th>Hôtel</th><td>700DH</td></tr>
+                    <tr><th>Repas</th><td>400DH</td></tr>
+                    <tr><th>Voiture (optionnel)</th><td>500DH</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tripContainer" id="Agadir">
+            <img >
+            <h1>Visitez la Gazelle du Souss</h1>
+            <p>Avec ses boulevards bordés de palmiers et ses bars sur le front de mer, Agadir, 1ère station balnéaire du Maroc, possède une atmosphère décidément très occidentale. Son climat exceptionnel, plus de 300 jours de soleil par an, et sa longue plage de 10 km, plus abritée que de nombreuses plages de la côte atlantique, vous assureront des vacances au bord de la mer exceptionnelles.</p>
+            <table>
+                <tbody>
+                    <tr><th>Hôtel</th><td>800DH</td></tr>
+                    <tr><th>Repas</th><td>300DH</td></tr>
+                    <tr><th>Voiture (optionnel)</th><td>400DH</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tripContainer" id="Tanger">
+            <img >
+            <h1>Tanger, une ville maritime très belle</h1>
+            <p>Situé sur le détroit de Gibraltar qui sépare l’Afrique de l’Europe, Tanger a longtemps été une importante place stratégique. Au fil des siècles, elle passa successivement sous domination romaine, vandale, byzantine, arabe et portugaise, au gré des invasions. Avec ses deux mille cinq cents ans d’existence, c’est l’une des plus anciennes villes d’Afrique du Nord. Sa médina, sa kasbah, ses bazars et ses souks comptent parmi les plus animés du pays, et ses plages sont superbes. Au siècle dernier, Tanger est devenu l’un des lieux de prédilection de la jet set internationale.</p>
+            <table>
+                <tbody>
+                    <tr><th>Hôtel</th><td>800DH</td></tr>
+                    <tr><th>Repas</th><td>300DH</td></tr>
+                    <tr><th>Voiture (optionnel)</th><td>400DH</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tripContainer" id="Fes">
+            <img >
+            <h1>Informations sur Fès</h1>
+            <p>Détrompez-vous : la plus vieille université du monde n'est pas Oxford ni la Sorbonne, c'est l'Université d'Al-Karaouine à Fès el Bali. Cette ville fortifiée, inscrite au Patrimoine mondial de l’UNESCO, vous ramènera au Moyen-Âge. Pour découvrir la culture de cette superbe ville, ou plutôt des deux villes, tentez le diable en prenant un taxi ou allez d'un site à l'autre à pied, des vieux quartiers de la Médina truffés de labyrinthes à Fès el Bali et les quatre Portes majestueuses de Fès, avec leurs mosaïques typiquement marocaines.</p>
+            <table>
+                <tbody>
+                    <tr><th>Hôtel</th><td>800DH</td></tr>
+                    <tr><th>Repas</th><td>300DH</td></tr>
+                    <tr><th>Voiture (optionnel)</th><td>400DH</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+
+    </section>
+<script></script>
+</body>
+</html>
